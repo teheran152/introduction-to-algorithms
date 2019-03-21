@@ -3,7 +3,7 @@
 ## An activity-selection problem
 - Each activity a_i has a start time s_i and a finish time f_i, where 0<= s_i <= f_i < inf
 - compatible : the intervals of a_i and a_j do not overlap
-  - s<sub>i>/sub> >= f<sub>j</sub> or s<sub>j</sub> >= f<sub>i</sub>
+  - s<sub>i</sub> >= f<sub>j</sub> or s<sub>j</sub> >= f<sub>i</sub>
 - select a maximum-size subset of mutually compatible activities
 
 - assume : f_1 <= f_2 <= f3 <= .. <= f_n (sorted)
