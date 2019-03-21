@@ -1,20 +1,20 @@
 # Greedy Algorithms
 
 ## An activity-selection problem
-- Each activity a_i has a start time s_i and a finish time f_i, where 0<= s_i <= f_i < inf
-- compatible : the intervals of a_i and a_j do not overlap
+- Each activity a<sub>i</sub> has a start time s<sub>i</sub> and a finish time f<sub>i</sub>, where 0<= s<sub>i</sub> <= f<sub>i</sub> < inf
+- compatible : the intervals of a<sub>i</sub> and a<sub>j</sub> do not overlap
   - s<sub>i</sub> >= f<sub>j</sub> or s<sub>j</sub> >= f<sub>i</sub>
 - select a maximum-size subset of mutually compatible activities
 
-- assume : f_1 <= f_2 <= f3 <= .. <= f_n (sorted)
+- assume : f<sub>1</sub> <= f<sub>2</sub> <= f<sub>3</sub> <= .. <= f<sub>n</sub> (sorted)
 
 - algorithm
-  - activity set 중 f_i가 가장 작은 activity를 선택
+  - activity set 중 f<sub>i</sub>가 가장 작은 activity를 선택
   - compatible하지 않은 activity 삭제
   - 위의 반복
 
-- 가장 빨리 끝나는 a_i을 넣어도 optimal solution을 구성할 수 있다.
-  - a_i 없이 optimal solution을 구성할 수 있다면, f_i 이후에 끝나는 activity를 제거하고 a_i를 넣어서 구성할 수 있음
+- 가장 빨리 끝나는 a<sub>i</sub>을 넣어도 optimal solution을 구성할 수 있다.
+  - a<sub>i</sub> 없이 optimal solution을 구성할 수 있다면, f<sub>i</sub> 이후에 끝나는 activity를 제거하고 a<sub>i</sub>를 넣어서 구성할 수 있음
   
 ## Elements of the greedy strategy
 
