@@ -61,10 +61,10 @@ return H.min
 ```kotlin
 val H = MAKE-FIB-HEAP()
 H.min = U.min
-H.roots = (H1.roots + H2.roots)
-if (H1.min == NIL) or (H2.min != NIL and H2.min.key < H1.min.key)) 
-    H.min = H2.min
-H.n = H1.n + H2.n
+H.roots = (U.roots + V.roots)
+if (U.min == NIL) or (V.min != NIL and V.min.key < U.min.key)) 
+    H.min = V.min
+H.n = U.n + V.n
 return H
 ```
 
