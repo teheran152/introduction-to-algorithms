@@ -39,7 +39,7 @@ H.roots = null
 H.min = null
 ```
 
-##### INSERT(H,x)
+##### INSERT(H, x)
 ```kotlin
 if H.min == null
     H.roots = listOf({x})
@@ -123,7 +123,7 @@ x.degree++
 y.mark = false
 ```
 
-##### FIB-HEAP-DECREASE-KEY(H,x,k)
+##### FIB-HEAP-DECREASE-KEY(H, x, k)
 ```kotlin
 x.key = k
 val y = x.parent
