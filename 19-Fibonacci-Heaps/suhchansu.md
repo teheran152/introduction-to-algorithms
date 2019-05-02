@@ -90,7 +90,8 @@
     - remove z from the root list of heap
     - if z == z.right
       - heap.min = nil
-    - else if heap.min == z.right
+    - else
+      - heap.min == z.right
       - consolidate(heap)
     - heap.n = heap.n - 1
   - return z
