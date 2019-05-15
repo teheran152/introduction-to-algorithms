@@ -55,8 +55,16 @@ A[x] = if (x in set),
 - summary : sqrt(u)-bit subarray of A the ith cluster
 
 ### A recursive structure
+- recursive structure that shinks by a factor of sqrt(u)
+- index(x,y)
+    - HIGH(x) = int(x/sqrt(u)) : the number of x's cluster
+    - LOW(x) = x mod sqrt(u) : provides x's position 
+    - x = index(HIGH,LOW) = HIGH * sqrt(u) + LOW
 
 #### proto vEB structures
+- u : universe size
+- summary : pointer to proto-vEB structure(sqrt(u))
+- cluster : sqrt(u) pointers array to proto-vEB structure(sqrt(u))
 
 #### Operations on a proto vEB structure
 
@@ -71,3 +79,22 @@ A[x] = if (x in set),
 ##### DELETING
 
 ### vEB tree
+- u : universe size
+- summary : pointer to proto-vEB structure(sqrt(u))
+- cluster : sqrt(u) pointers array to proto-vEB structure(sqrt(u))
+- min : the minimum element in the vEB tree
+- max : the maximum element in the vEB tree
+
+##### MEMBER
+
+##### MINIMUM
+
+##### SUCCESSOR
+
+##### INSERTING
+
+##### DELETING
+
+```
+One of the reason is that complexity is defined not on the size of the set you store but on the size of the universe of values. Another difference is that keys can't be arbitrary types for which you have comparison operation but must be integers. You should not see vEB as an alternative for BST but rather as an alternative for arrays. An array have O(1) store and look up costs for object keyed by integers. vEB offer O(log log M), where M is size of the universe of your values. Now, you see vEB is not better than regular array for look ups and store but it offers O(1) min, max operations and O(log log M) prev next key operations which array does not. It's worth to mention that the layout of vEB trees has a properties which make possible to create cache oblivious trees which are far more interesting developments of modern CS.
+```
