@@ -1,6 +1,6 @@
 ### van Emde Boas tree
 
-```
+``
 Given a set S of elements such that the elements are taken from universe {0, 1, …. u-1}, perform following operations efficiently.
 
 - insert(x) : Adds an item x to the set+ S.
@@ -12,13 +12,13 @@ Given a set S of elements such that the elements are taken from universe {0, 1, 
 - min() : Returns minimum value from S.
 - successor(x) : Returns the smallest value in S which is greater than x.
 - predecessor(x) : Returns the largest value in S which is smaller than x.
-```
+``
 
-```
+``
 - RB tree, AVL tree : O(lg n)
 - bitvector : insert, delete, find in O(1), but other operations in O(u)
 - vEB : insert, delete, find, successor, predecessor in O(lglogu), max, min in O(1)
-```
+``
 
 - SEARCH, INSERT, DELETE, MINIMUM, MAXIMUM, SUCCESSOR, PREDECESSOR in O(lg lg n)
 - MEMBER(S, x) : which returns a boolean indicating whether the value x is currently in dynamics set S
@@ -95,6 +95,6 @@ A[x] = if (x in set),
 
 ##### DELETING
 
-```
+``
 One of the reason is that complexity is defined not on the size of the set you store but on the size of the universe of values. Another difference is that keys can't be arbitrary types for which you have comparison operation but must be integers. You should not see vEB as an alternative for BST but rather as an alternative for arrays. An array have O(1) store and look up costs for object keyed by integers. vEB offer O(log log M), where M is size of the universe of your values. Now, you see vEB is not better than regular array for look ups and store but it offers O(1) min, max operations and O(log log M) prev next key operations which array does not. It's worth to mention that the layout of vEB trees has a properties which make possible to create cache oblivious trees which are far more interesting developments of modern CS.
-```
+``
