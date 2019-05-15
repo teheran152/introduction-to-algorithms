@@ -1,6 +1,6 @@
 ### van Emde Boas tree
 
-``
+```
 Given a set S of elements such that the elements are taken from universe {0, 1, …. u-1}, perform following operations efficiently.
 
 - insert(x) : Adds an item x to the set+ S.
@@ -12,13 +12,13 @@ Given a set S of elements such that the elements are taken from universe {0, 1, 
 - min() : Returns minimum value from S.
 - successor(x) : Returns the smallest value in S which is greater than x.
 - predecessor(x) : Returns the largest value in S which is smaller than x.
-``
+```
 
-``
+```
 - RB tree, AVL tree : O(lg n)
 - bitvector : insert, delete, find in O(1), but other operations in O(u)
 - vEB : insert, delete, find, successor, predecessor in O(lglogu), max, min in O(1)
-``
+```
 
 - SEARCH, INSERT, DELETE, MINIMUM, MAXIMUM, SUCCESSOR, PREDECESSOR in O(lg lg n)
 - MEMBER(S, x) : which returns a boolean indicating whether the value x is currently in dynamics set S
