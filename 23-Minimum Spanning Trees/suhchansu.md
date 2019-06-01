@@ -75,3 +75,84 @@ while (A != spaningTree) {
 - cut(Vc, V-Vc) recpects A
 - (u, v) is light edge for this cut
 - (u, v) is safe for A
+
+### 23.2 The algorithms of Kruskal and Prim
+
+#### Kruskal's algorithm
+- ueses disjointSet
+  - uses heuristics for fast
+    - union by rank
+    - path compression
+- while(select light edge > add edge > isGraph)
+
+``` Swift
+func kruskal(G, w) -> Graph {
+  let A: Graph = nil
+
+  for vertex in G.V {
+    makeSet(vertex)
+  }
+
+  sort G.E by w
+
+  for edge in G.E {
+    if findSet(u) != findSet(v) {
+      A = sum(A, (u, v))
+      union(u, v)
+    }
+  }
+  return A
+}
+
+```
+- init A is BicO(1)
+- sorting is BicO(E log E)
+- findSet, uinon are BicO(E)
+- total : BicO((V + E) alpha(V))
+  - alpha : very slowly growing function 
+- disjointSet operations are BicO(E alpha(V))
+  - alpha(|V|) == BicO(log V) == BicO(log E)
+  - total time of Kruskal : BicO(E log E)
+  - |E| < |V|^2 
+  - log|E| == BicO(log V)
+  - Kruskal time : BicO(E log V)
+
+#### Prim's algoritm 
+
+``` Swift
+func prim(G, w, r) {
+  for u in G.V {
+    u.key = infinity
+    u.pi = nil
+  }
+  r.key = 0
+
+  let Q = G.V
+  while Q != nil {
+    let u = extractMin(Q)
+    for v in G.adj[u] {
+      if isSubset(v, Q) 
+      && w(u, v) < v.key {
+        v.pi = u
+        v.key = w(u, v)
+      }
+    }
+  }
+}
+// v.key : minimum weight edge connecting v to other v
+// v.pi : parent of v
+// Q : min priority queue
+```
+
+- Prim time depends on how to imprement min priority queue
+  - binary min heap
+    - build min heap : BicO(V)
+    - while : |V|
+    - extractMin() : BicO(log V)
+    - total extractMin : BicO(V log V)
+    - for loop : O(E) 
+    - sum of lenghs of all adjacecy list : 2|E|
+    - decreaseKey() by binary min heap : BicO(log V)
+    - Prim's total time : BicO(V log V + E log V) == BicO(E log V) == Kruskal time
+  - finonacci heap
+    - BicO(E + V log V)
