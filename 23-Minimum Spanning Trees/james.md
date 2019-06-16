@@ -45,7 +45,8 @@ MST-KRUSKAL(G, w)
 8   UNION(u, v) 
 9 return A
 ```
-
+![kruskal](https://user-images.githubusercontent.com/11069488/59571184-4d443a80-90dd-11e9-9ba2-0ec862f36fff.png)
+![kruskal2](https://user-images.githubusercontent.com/11069488/59571227-9ac0a780-90dd-11e9-826e-78758b153d07.png)
 - running time
  - O(ElgE)
 
@@ -67,4 +68,5 @@ MST-PRIM(G,w,r)
 10      v.phi = u
 11      v.key = w(u, v)
 ```
+![prim](https://user-images.githubusercontent.com/11069488/59571185-4d443a80-90dd-11e9-808d-ad9a487edbee.png)
 - running time: O(VlgV +  ElgV) = Big O(ElgV)
