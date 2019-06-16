@@ -45,13 +45,13 @@ MST-KRUSKAL(G, w)
 8   UNION(u, v) 
 9 return A
 ```
-- 그림
+
 - running time
  - O(ElgE)
 
  ##### Prim's algorithm
  - Dikstra's algorithm과 비슷
- - 항상 sinfle  tree 형태를 한 집합의 edges들을 정보인 property를 가지고 있다.
+ - 항상 single  tree 형태를 한 집합의 edges들을 정보인 property를 가지고 있다.
 
 ```
 MST-PRIM(G,w,r) 
