@@ -21,14 +21,14 @@ class DisjointSet:
         self.parent = list(range(n))
         self.rank = [0] * n
 
-    def find(self, v):
+    def find_parent(self, v):
         if self.parent[v] == v:
             return v
-        return self.find(self.parent[v])
+        return self.find_parent(self.parent[v])
 
     def union(self, x, y):
-        xroot = self.find(x)
-        yroot = self.find(y)
+        xroot = self.find_parent(x)
+        yroot = self.find_parent(y)
 
         if self.rank[xroot] < self.rank[yroot]:
             self.parent[xroot] = yroot
@@ -49,8 +49,8 @@ class Graph:
         mst = []
         for e in self.edges:
             u, v, _ = e
-            x = disjoint.find(u)
-            y = disjoint.find(v)
+            x = disjoint.find_parent(u)
+            y = disjoint.find_parent(v)
 
             if x != y:
                 mst.append(e)
@@ -59,6 +59,7 @@ class Graph:
                     break
 
         return mst
+
 
 if __name__ == "__main__":
     g = Graph(9, [
@@ -82,7 +83,6 @@ if __name__ == "__main__":
 
     for u, v, w in mst:
         print("%d - %d => %d" % (u, v, w))
-
 
 ```
 
