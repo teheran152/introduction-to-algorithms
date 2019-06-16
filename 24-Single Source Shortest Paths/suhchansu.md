@@ -149,10 +149,132 @@ func relax(u, v, w) {
 - 24.5 prove the properties of shortes path and relaxation
 
 ### 24.1 The Bellman-Ford algorithm
+- solves the single source shortest paths in which edge weights may be negative 
+  - returns a bool indicating a negative weight cycle from the source
+  - if cycle != nil > no solution
+  - if cycle == nil > shortest paths
+- uses relaxes edges, progressively decreasing v.d
+
+``` Swift
+func bellmanFord(G, w, s) {
+  // initializing d, pi vlaues of all vertices
+  // Bictheta(V)
+  initializeSingleSource(G, s)
+
+  // BicTheta(E)
+  for i in (1..<(|G.V|-1)) {
+    for edge(u, v) in G.E {
+      relax(u, v, w)
+    }
+  }
+
+  // check negative weight cycle, return bool
+  // BicO(E)
+  for edge(u, v) in G.E {
+    if v.d > (u.d + w(u, v)) {
+      return false
+    }
+  }
+  return true
+
+  // runs in time BicO(VE)
+}
+```
+
+#### Lemma 24.2
+- let G = contains no negative weight cycles
+- after relax all edges, v.d == delta(s, v) in vertices
+
+#### Proof
+- path relaxation property
+- v.d == v_k.d == delta(s, v_k) == delta(s, v)
 
 ### 24.2 Single-source shortes paths in directed acyclic graphs
+- relaxing edges of weighted dag (directed acyclic graph)
+  - uses topological sort > sortest paths in BicTheta(V + E)
+
+``` Swift
+func dagShortestPaths(G, w, s) {
+  // BicTheta(V + E)
+  topologicallySort(G)
+
+  // BicTheta(V)
+  initializeSingleSource(G, s)
+
+  // G.V is topologically sorted order
+  // each loop Theta(1)
+  for vertex u in G.V {
+    for vertex v in G.adj[u] {
+      realx(u, v, w)
+    }
+  }
+
+  // runs in BicTheta(V + E)
+}
+```
+
+#### Theorem 24.5
+- let G = weighted, directed, no cycles
+  - dagShortestPaths(:) procedure
+  - v.d = delta(s, v)
+  - prdecessor subgraph G_pi = shortes path tree
+
+#### Proof
+- v.d = delta(s, v)
+- v is not reachable form s
+- v.d == delta(s, v) == infinity (no path property)
+- let v = reachable from s
+- let p = [v_0, v_1 ... v_k]
+- path relaxation path peroperty > v_i.d = delta(s, v_i)
+- by the predecessor subgraph property, G.pi is shortes paths tree 
 
 ### 24.3 Dijkstra's algorithm
+- solves the single source shortest paths
+  - weighted
+  - dircted graph
+  - all edges are nonnegative
+- lower running time than Bellan Ford
+- uses a min priority queue Q
+
+``` Swift
+func dijstra(G, w, s) {
+  // initializes d, pi values
+  initializeSingleSource(G, s)
+
+  let S = emptySet
+  let Q = G.V
+
+  // extracts a vertex u from Q = V - S
+  // runs in |V|
+  while (Q != emptySet) {
+    let u = extractMin(Q)
+
+    // adds extracted vertex in S > maintaining the invariant
+    // vertex u has the smallest shortest path in V - S
+    let S = union(S, {u})
+
+    // updating v.d, predecessor v.pi
+    for vertex in G.Adj[u] {
+      relax(u, v, w)
+    }
+  }
+}
+
+```
+
+#### Theorem 24.6(Correctness of Dijkstra's algorithm)
+- weighted
+- dircted graph
+- all edges are nonnegative
+- u.d == delta(s, u) in all vertices
+
+#### Proof
+- use loop invariant, while(Q != emptySet) { }
+
+#### Initialization
+  - let S = emptySet > invariant is trivially true
+
+#### Maintenance
 
 ### 24.4 Difference constraints and shortest paht
 
