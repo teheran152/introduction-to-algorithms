@@ -86,7 +86,7 @@ if __name__ == "__main__":
 
 ```
 
-### Prism's algorithm
+### Prim's algorithm
 ```python
 #!/usr/bin/env python3
 
@@ -206,7 +206,7 @@ class Graph:
 
         return mst
 
-    def PrismMST(self):
+    def PrimMST(self):
         key = []
         parent = []
         heap = Heap()
