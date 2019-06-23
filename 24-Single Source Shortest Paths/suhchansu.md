@@ -272,10 +272,64 @@ func dijstra(G, w, s) {
 - use loop invariant, while(Q != emptySet) { }
 
 #### Initialization
-  - let S = emptySet > invariant is trivially true
+- let S = emptySet > invariant is trivially true
 
-#### Maintenance
+#### Corollary 24.7
+- Dijkstra algorithm 
+  - directed graph
+  - w : nonnegative weight
+  - s : source
+- predecessor subgraph G_pi : shortest paths tree
+
+#### Proof
+- uses Theorem 24.6, predecessor subgraph property
+
+#### Analysis
+- How fast Dijkstra?
+  - insert()
+  - extractMin()
+  - decreseKey()
+- insert(), extractMin() ared called once per vertex
+  - each vertex is added to set S
+  - each edge in Adj[u] is examined for loop 
+  - total edges : |E|
+  - total for loop time : |E|
+- Dijkstra's running time depends on how to imprement minPriorityQueue
 
 ### 24.4 Difference constraints and shortest paht
+- shows special case of linear programming
+
+#### Linear programming
+- general linear programming does not always run in polynominal time
+- two reasons
+  - cast a given problem as a polynomial size
+  - there is fater algorithm for many case
+    - single path shortest path problem
+    - maximum flow problem
+- there is a feasible solution
+
+#### Systems of differece constraints
+- each row A contains 1 and more 
+- not A is 0
+
+#### Lemma 24.8 
+- let x = solution of diffrence constraints
+- let d = any constant
+- x + d = (x_1 + d, x_2 + d, ..., x_n + d)
+
+#### Proof
+- (x_j + d) - (x_i + d) = x_j - x_i
+- if x satisfies Ax <= b
+- x + d
+
+#### Constraint graphs
+- constraint graph gas additional vertex v_0
 
 ### 24.5 Proofs of shortest-paths properties
+- prove properties
+  - triangle inequality
+  - upper bound
+  - no path
+  - covergence
+  - path realxation
+  - predecessor subgraph
